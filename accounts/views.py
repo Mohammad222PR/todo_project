@@ -12,12 +12,12 @@ from django.views.generic import CreateView, FormView
 
 
 class LoginUserView(LoginView):
-    templates = "account/login.html"
+    template_name = 'accounts/login.html'
     fields = "username", "password"
     redirect_authenticated_user = True
 
     def get_success_url(self):
-        return reverse_lazy('home')
+        return reverse_lazy('home:home')
 
 
 class SingUp(FormView):
