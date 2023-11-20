@@ -8,6 +8,7 @@ class TodoSerializers(serializers.ModelSerializer):
     """
 
     user = serializers.SerializerMethodField()
+    url_task = serializers.SerializerMethodField
 
     class Meta:
         model = Todo
@@ -21,3 +22,11 @@ class TodoSerializers(serializers.ModelSerializer):
         request = self.context["request"]
         validated_data["user"] = request.user.id
         return super().create(validated_data)
+
+
+    def get_url_task(self, obj):
+        """
+        For show task url 
+        """
+        request = self.context["request"]
+        return request.build_absolute_uri(obj.pk)
