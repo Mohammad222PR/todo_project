@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'accounts.apps.AccountsConfig',
     # Package.
-     'django_filters',
-     "rest_framework",
+    'django_filters',
+    'rest_framework',
+    'drf_yasg',
+
 
 ]
 
