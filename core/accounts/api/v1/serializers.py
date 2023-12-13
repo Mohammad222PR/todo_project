@@ -8,7 +8,6 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth.password_validation import validate_password
 
 
-
 class Registerationserializer(serializers.ModelSerializer):
     password1 = serializers.CharField(write_only=True)
 
@@ -18,7 +17,7 @@ class Registerationserializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["username","email", "password", "password1"]
+        fields = ["username", "email", "password", "password1"]
 
     def validate(self, attrs):
         if attrs.get("password") != attrs.get("password1"):
@@ -67,7 +66,6 @@ class CustomAuthTokenSerializer(serializers.Serializer):
                 msg = _("Unable to log in with provided credentials.")
                 raise serializers.ValidationError(msg, code="authorization")
 
-           
         else:
             msg = _('Must include "username" and "password".')
             raise serializers.ValidationError(msg, code="authorization")
@@ -78,8 +76,7 @@ class CustomAuthTokenSerializer(serializers.Serializer):
 
 class CustomTokenObtainPairSerializers(TokenObtainPairSerializer):
     def validate(self, attrs):
-        validate_data= super().validate(attrs)
-        validate_data['email'] = self.user.email
-        validate_data['id'] = self.user.id
+        validate_data = super().validate(attrs)
+        validate_data["email"] = self.user.email
+        validate_data["id"] = self.user.id
         return validate_data
-

@@ -12,7 +12,6 @@ from rest_framework import status
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 
-
 class RegistrationAPIView(generics.GenericAPIView):
     serializer_class = Registerationserializer
     parser_classes = (MultiPartParser,)
@@ -33,7 +32,7 @@ class RegistrationAPIView(generics.GenericAPIView):
 
 
 class CustomObtainAuthToken(ObtainAuthToken):
-    
+
     """
     customObtainAuthToken for token now we have three out put field
     {
@@ -50,7 +49,7 @@ class CustomObtainAuthToken(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(
             data=request.data, context={"request": request}
-        )   
+        )
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data["user"]
         token, created = Token.objects.get_or_create(user=user)
@@ -61,7 +60,8 @@ class CustomObtainAuthToken(ObtainAuthToken):
                 "email": user.email,
             }
         )
-    
+
+
 class CustomDiscardAuthToken(APIView):
     """
     discard user token if input your token you can delete your token id
@@ -76,8 +76,8 @@ class CustomDiscardAuthToken(APIView):
             {"detail": "your token delete successfully"},
             status=status.HTTP_204_NO_CONTENT,
         )
-    
+
+
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializers
     parser_classes = (MultiPartParser,)
-
