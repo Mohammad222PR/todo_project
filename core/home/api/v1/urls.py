@@ -5,6 +5,6 @@ app_name = "api-v1"
 
 
 router = DefaultRouter()
-router.register(r'todo/todo_list', views.TodoApi, basename='todo_list_api')
+router.register(r'todo/todo_list', views.TodoApi, basename='todo')
 
 urlpatterns = router.urls
