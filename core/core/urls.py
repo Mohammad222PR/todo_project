@@ -37,7 +37,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("accounts.urls", namespace="accounts")),
     path("", include("home.urls", namespace="home")),
-    path("todo/api/v1/", include("home.api.v1.urls", namespace="api-v1")),
 
     # Swagger
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
