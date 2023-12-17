@@ -15,6 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Setup Docker-Compose
-      run: dokcer-compose buld -d
+      run: docker-compose buld -d
     - name: Test
       run: docker exec sh -c "pytest ."
