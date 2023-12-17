@@ -18,3 +18,4 @@ jobs:
       run: docker-compose up -d
     - name: Test
       run: docker exec backend2 sh -c "pytest ."
+      
