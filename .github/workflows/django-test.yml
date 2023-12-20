@@ -17,5 +17,5 @@ jobs:
     - name: Setup Docker-Compose
       run: docker-compose up -d
     - name: Test
-      run: docker exec backend2 sh -c "pytest ."
+      run: docker exec backend_todo sh -c "pytest ."
       
