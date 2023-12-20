@@ -6,8 +6,8 @@ from .permissions import *
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 from .paginations import PagInationClass
-
-
+from rest_framework.response import Response
+from rest_framework.views import APIView
 # Imported Livery
 class TodoApi(ModelViewSet):
     """
@@ -23,3 +23,7 @@ class TodoApi(ModelViewSet):
     search_fields = ["title", "user"]
     ordering_fields = ["complete"]
     pagination_class = PagInationClass
+
+class Test(APIView):
+    def get(self, request):
+        return Response({'detail':'hi'})
