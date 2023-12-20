@@ -24,14 +24,11 @@ def commend_user():
 
 @pytest.mark.django_db
 class TestTodoApi:
-    # 1
     def test_get_todo_response_200(self, api_client):
         url = reverse("home:api-v1:todo-list")
         response = api_client.get(url)
         assert response.status_code == 200
 
-    
-    # 2
     def test_create_todo_obj_response_201(self, api_client, commend_user):
         url = reverse("home:api-v1:todo-list")
         data = {
@@ -45,7 +42,6 @@ class TestTodoApi:
         response = api_client.post(url, data)
         assert response.status_code == 201
 
-    # 3
     def test_create_todo_obj_no_aut_response_401(self, api_client):
         url = reverse("home:api-v1:todo-list")
         data = {
@@ -56,7 +52,6 @@ class TestTodoApi:
         response = api_client.post(url, data)
         assert response.status_code == 403
 
-    # 4
     def test_create_todo_obj_invalid_auth_response_403(self, api_client):
         url = reverse("home:api-v1:todo-list")
         data = {
@@ -68,7 +63,6 @@ class TestTodoApi:
         response = api_client.post(url, data)
         assert response.status_code == 403
 
-    # 5
     def test_create_todo_obj_invalid_data_title_response_400(
         self, api_client, commend_user
     ):
@@ -148,7 +142,7 @@ class TestTodoApi:
         response = api_client.post(url, data)
         assert response.status_code == 403
 
-    # 6
+    
     def test_create_todo_obj_no_data_response_400(self, api_client):
         url = reverse("home:api-v1:todo-list")
         data = {}
