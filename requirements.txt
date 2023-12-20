@@ -1,14 +1,26 @@
+# General modules
 Django==4.2.6
-django-filter==23.3
-djangorestframework==3.14.0
-importlib-metadata==6.8.0
-Markdown==3.5.1
 python-decouple==3.8
-pytz==2023.3.post1
-sqlparse==0.4.4
-typing_extensions==4.8.0
-tzdata==2023.3
-zipp==3.17.0
+djangorestframework
+Pillow
+
+# third party modules
+markdown       
+django-filter
+drf-yasg[validation]
 djangorestframework-simplejwt
+django-cors-headers
+
+# delployment modules
+
+# email third_party modules
+django-mail-templated
+# refactor and test modules
+black
+flake8
 pytest
 pytest-django
+coreapi
+
+# random data creator
+Faker
