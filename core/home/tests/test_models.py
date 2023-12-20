@@ -2,6 +2,7 @@ import pytest
 from django.contrib.auth.models import User
 from ..models import *
 from datetime import datetime
+from rest_framework.test import APIClient
 
 
 @pytest.fixture
@@ -13,6 +14,12 @@ def user():
        
     )
     return user
+
+@pytest.fixture
+def client():
+    client = APIClient()
+    return client
+
 
 @pytest.mark.django_db
 class TestModel():
@@ -26,3 +33,5 @@ class TestModel():
         )
         
         assert Todo.objects.filter(id=todo.id).exists()
+
+   
