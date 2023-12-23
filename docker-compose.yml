@@ -3,7 +3,7 @@ version: "3.9"
 
 services:
   redis:
-    container_name: redis
+    container_name: redis1
     image: redis
     restart: always
     ports:

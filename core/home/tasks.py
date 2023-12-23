@@ -2,19 +2,20 @@ from time import sleep
 from celery import shared_task
 from django_celery_results.models import TaskResult
 
-
-@shared_task()
+@shared_task
 def Task():
-    sleep(3)
-    print('x')
+    print('Task completed successfully')
 
-# tasks.py
+@shared_task
+def Delete_task():
+    task = TaskResult.objects.all()
+    task.adelete(all)
+    print('successfully deleted')
+
 
 @shared_task
 def clean_up_completed_tasks():
-    completed_tasks = TaskResult.objects.filter(enabled=False)
-
+    completed_tasks = TaskResult.objects.filter(status='SUCCESS')
     for task in completed_tasks:
         task.delete()
-
-    print("Cleaned up completed tasks.")
+    print('clean_up_completed_tasks completed')

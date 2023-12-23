@@ -91,10 +91,16 @@ class TaskDeleteView(LoginRequiredMixin, View):
 class TaskView(View):
     def get(self, request, *args, **kwargs):
         Task.delay()
-        return HttpResponse("<h1>Task deleted</h1>")
+        return HttpResponse("<h1>Task d</h1>")
 
 
 class TaskDeleteView(View):
-    def post(self, request):
+    def get(self, request, *args, **kwargs):
+            return HttpResponse("<h1>Task d</h1>")
+
+    
+    def post(self, request, *args, **kwargs):
         clean_up_completed_tasks.delay()
-        return HttpResponse("succes")
+        return HttpResponse("<h1>Taskdd d</h1>")
+
+
