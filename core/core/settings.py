@@ -139,4 +139,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # setup celery
 
 CELERY_BROKER_URL = 'redis://redis:6379/1'
-CELERY_RESULT_BACKEND = 'redis://redis:6379/1'
+
+
+# CELERY_BEAT_SCHEDULE = {
+#     'clean_up_completed_tasks': {
+#         'task':'accounts.tasks.clean_up_completed_tasks',
+#         'schedule':5
+#     }
+# }
