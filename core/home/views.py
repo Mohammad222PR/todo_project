@@ -1,9 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, UpdateView
-
+from .tasks import Task, clean_up_completed_tasks
 from home.models import Todo
 
 
@@ -85,3 +86,15 @@ class TaskDeleteView(LoginRequiredMixin, View):
         if todo.user.id == request.user.id:
             todo.delete()
             return redirect("home:todo_create_view")
+
+
+class TaskView(View):
+    def get(self, request, *args, **kwargs):
+        Task.delay()
+        return HttpResponse("<h1>Task deleted</h1>")
+
+
+class TaskDeleteView(View):
+    def post(self, request):
+        clean_up_completed_tasks.delay()
+        return HttpResponse("succes")
